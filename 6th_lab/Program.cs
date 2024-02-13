@@ -11,7 +11,7 @@ namespace _6th_lab
     {
         private int _x_pos; // default(int) = 0
         private int _y_pos;
-        private string _name; // default(string) = null
+        private string _name; // default(string) = null 
 
         public double Distance { get { return Math.Sqrt(_x_pos * _x_pos + _y_pos * _y_pos); } }// публичное свойство
         
