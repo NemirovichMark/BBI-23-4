@@ -1,7 +1,9 @@
-﻿struct sorevnovania
+﻿
+// 4 zadanie(1) 
+struct sorevnovania
 {
 
-    
+
     private string _Surname;
     private int _besttry;
     private int _firsttry;
@@ -10,33 +12,24 @@
     public int Secondtry { get { return _secondtry; } set { _secondtry = value; } }
 
     public int Besttry { get { return _besttry; } set { _besttry = value; } }
-    public sorevnovania (int firsttry, int secondtry, int besttry, string surname)
+    public sorevnovania(int firsttry, int secondtry, string surname)
     {
         _firsttry = firsttry;
         _secondtry = secondtry;
-        _besttry = besttry;
+        _besttry = 0;
         _Surname = surname;
-        if (firsttry>secondtry)
+
+        if (firsttry > secondtry)
         {
-            besttry = firsttry;
+            _besttry = firsttry;
 
         }
-        else if (secondtry>=firsttry) { besttry = secondtry; }
+        else if (secondtry >= firsttry) { _besttry = secondtry; }
     }
-    
-    
-    public void Print() => Console.WriteLine($"{_firsttry}, {_secondtry},{_besttry}, {_Surname}");
-    //void Besttry(int besttry)
-    //{
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        if (Firsttry>Secondtry){besttry = Firsttry;}
-    //        else if ( Secondtry >= Firsttry) { besttry = Secondtry; }
-    //        return;
-    //    }
 
-    //}
-    
+
+    public void Print() => Console.WriteLine($"{_besttry}, {_Surname}");
+
 
 }
 
@@ -44,26 +37,59 @@ class Program
 {
 
     static void Main()
-    {
-        sorevnovania[] everything = new sorevnovania[3];
 
-        everything[0] = new sorevnovania(155, 176, 0,  "Ivanov");
-        everything[1] = new sorevnovania(180, 187, 0, "Petrov");
-        everything[2] = new sorevnovania(181, 191, 0, "Sidorov");
-          void Besttry(int besttry)
+    {
+
+
+        sorevnovania[] everything = new sorevnovania[5];
+
+        everything[0] = new sorevnovania(155, 176, "Ivanov");
+        everything[1] = new sorevnovania(180, 187, "Petrov");
+        everything[2] = new sorevnovania(181, 191, "Sidorov");
+        everything[3] = new sorevnovania(165, 186, "Ivanov");
+        everything[4] = new sorevnovania(175, 171, "Ivanov");
+
+
+
+
+
+
+
+
+
+
+        everything = sort(everything);
+        for (int i = 0; i < everything.Length; i++)
         {
-            for (int i =0; i<everything.Length; i++)
+            everything[i].Print();
+        }
+
+    }
+
+    static sorevnovania[] sort(sorevnovania[] everything)
+    {
+        for (int i = 0; i < everything.Length; i++)
+        {
+
+            for (int j = i; j < everything.Length - 1; j++)
             {
-                Console.WriteLine(everything[i].Besttry); 
+                if (everything[i].Besttry < everything[j].Besttry)
+                {
+
+                    sorevnovania results = everything[j];
+                    everything[j] = everything[i];
+                    everything[i] = results;
+
+                }
             }
 
+
+
         }
-      
+        return everything;
 
 
 
     }
-    
-    
-    
 }
+
