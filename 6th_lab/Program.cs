@@ -12,10 +12,12 @@ namespace _6th_lab
         private int _x_pos; // default(int) = 0
         private int _y_pos;
         private string _name; // default(string) = null 
+        private static int _counter; // принаджелит всему типу, а не какому-то отдельно объекту
 
         public double Distance { get { return Math.Sqrt(_x_pos * _x_pos + _y_pos * _y_pos); } }// публичное свойство
-        
+        public int Age { get; private set; } // автосвойство только для чтения!!!
         public int Lvl { get; private set; } // автосвойство только для чтения!!!
+        public static int Counter { get { return _counter; } } // автосвойство только для чтения!!!
 
         public Character(int x, int y, string name) // конструктор для создания переменной с типом Character
         {
@@ -23,8 +25,14 @@ namespace _6th_lab
             _y_pos = y;
             _name = name;
             Lvl = 0;
+            Age = new Random().Next(18, 25);
         }
-        public void Print() => Console.WriteLine($"{_x_pos}, {_y_pos}, {_name}"); 
+        public void Print() => Console.WriteLine("{0,10}, {1, 10}, {2, 10}", _x_pos, _y_pos, _name);
+        public void LvlUp()
+        {
+            Lvl++;
+            _counter++;
+        }
     }
     internal class Program
     {
@@ -39,27 +47,35 @@ namespace _6th_lab
 
             Character enemy = new Character();
             Character[] players = new Character[ints.Length];
-            players[0] = new Character(1,2, "Jonatan");
+            players[0] = new Character(1, 2, "Jonatan");
             players[1] = new Character(-8, 2, "Smith");
             players[2] = new Character(1, 6, "Rob");
 
             for (int i = 0; i < players.Length; i++)
             {
                 players[i].Print();
+                players[i].LvlUp();
             }
 
-            players = Sort(players);
-
+            players[2].LvlUp();
+            players[2].LvlUp();
+            Sort(players);
 
             for (int i = 0; i < players.Length; i++)
             {
                 players[i].Print();
-                Console.WriteLine(players[i].Lvl);
+                Console.WriteLine("Player lvl:" + players[i].Lvl);
+                Console.WriteLine("Counter:" + Character.Counter);
             }
 
+            enemy = FindYoungest(players); // получить копию из метода
+            Character friend = new Character();
+            FindYoungest(players, ref friend);
+            friend.Print();
+            Console.ReadKey();
         }
 
-        static Character[] Sort(Character[] players) 
+        static void Sort(Character[] players) 
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -71,8 +87,35 @@ namespace _6th_lab
                         players[i] = character; // игроков
                     }
             }
-                // do sort
-                return players; // вернуть тот же тип, что требуется у метода
+        }
+
+        static Character FindYoungest(Character[] players) // вернуть значение
+        {
+            if (players == null && players.Length <= 0) // валидация
+                return new Character(); // конструктор по умолчанию
+            Character youngest = players[0]; // 
+            for (int i = 1; i < players.Length; i++)
+            {
+                if (players[i].Age < youngest.Age)
+                {
+                    youngest = players[i];
+                }
+            }
+            return youngest;
+        }
+
+        static void FindYoungest(Character[] players, ref Character youngest) // вернуть значение
+        {
+            if (players == null && players.Length <= 0) // валидация
+                return; // конструктор по умолчанию
+            youngest = players[0]; // 
+            for (int i = 1; i < players.Length; i++)
+            {
+                if (players[i].Age < youngest.Age)
+                {
+                    youngest = players[i];
+                }
+            }
         }
     }
 }
