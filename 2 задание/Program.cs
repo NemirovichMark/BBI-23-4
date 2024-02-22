@@ -30,7 +30,10 @@
         {
             if (_AVG >= 4)
 
-            { Console.WriteLine($"{_name},{_AVG}"); }
+            {
+                Console.WriteLine("{0},   {1}", _name, _AVG);
+
+            }
         }
     }
     static void Main()
@@ -43,7 +46,7 @@
         results[4] = new tablica("Smislov", 4, 4, 4, 4);
         results = sort(results);
 
-        Console.WriteLine("Фамилия" + " Средний бал");
+        Console.WriteLine("Фамилия" + "   Средний бал");
         for (int i = 0; i < results.Length; i++)
 
         { results[i].Print(); }
