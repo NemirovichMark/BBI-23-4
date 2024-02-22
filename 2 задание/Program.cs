@@ -29,6 +29,7 @@
         public void Print()
         {
             if (_AVG >= 4)
+
             { Console.WriteLine($"{_name},{_AVG}"); }
         }
     }
@@ -41,10 +42,12 @@
         results[3] = new tablica("Kostin", 4, 4, 3, 5);
         results[4] = new tablica("Smislov", 4, 4, 4, 4);
         results = sort(results);
+
+        Console.WriteLine("Фамилия" + " Средний бал");
         for (int i = 0; i < results.Length; i++)
-        {
-            results[i].Print();
-        }
+
+        { results[i].Print(); }
+
     }
     static tablica[] sort(tablica[] results)
     {
