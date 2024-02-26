@@ -64,21 +64,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Количество прыгунов:");
+        Console.WriteLine("Amount of divers");
         int n = int.Parse(Console.ReadLine());
 
         List<Diver> divers = new List<Diver>();
 
         for (int i = 0; i < n; i++)
         {
-            Console.WriteLine("Фамилия");
+            Console.WriteLine("Surname");
             string name = Console.ReadLine();
 
             Diver diver = new Diver(name);
 
             for (int j = 0; j < 4; j++)
             {
-                Console.WriteLine("Коэффицент");
+                Console.WriteLine("Difficulty");
 
                 double difficulty = double.Parse(Console.ReadLine());
 
@@ -86,7 +86,7 @@ class Program
 
 \                for (int k = 0; k < 7; k++)
                 {
-                    Console.WriteLine("7 оценок по отдельности");
+                    Console.WriteLine("7 marks");
 
                     double score = double.Parse(Console.ReadLine());
 
@@ -107,9 +107,9 @@ class Program
 
         divers.Sort((a, b) => b.TotalScore.CompareTo(a.TotalScore));
 
-        Console.WriteLine("Итоговая таблица");
+        Console.WriteLine("Results:");
         Console.WriteLine("---------------------");
-        Console.WriteLine("| Место | Фамилия | Итоговая оценка |");
+        Console.WriteLine("| Place | Surname | Total |");
         Console.WriteLine("---------------------");
         for (int i = 0; i < n; i++)
         {
