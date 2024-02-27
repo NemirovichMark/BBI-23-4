@@ -1,0 +1,7 @@
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\bin\Debug\6.1.exe.config
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\bin\Debug\6.1.exe
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\bin\Debug\6.1.pdb
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\obj\Debug\6.1.csproj.AssemblyReference.cache
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\obj\Debug\6.1.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\obj\Debug\6.1.exe
+C:\Users\Asus\source\repos\BBI-23-4\Lab_6\6.1\obj\Debug\6.1.pdb
