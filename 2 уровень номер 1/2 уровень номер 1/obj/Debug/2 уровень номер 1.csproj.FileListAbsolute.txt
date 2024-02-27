@@ -1,0 +1,14 @@
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\bin\Debug\2 уровень номер 1.exe.config
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\bin\Debug\2 уровень номер 1.exe
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\bin\Debug\2 уровень номер 1.pdb
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.csproj.AssemblyReference.cache
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.csproj.CoreCompileInputs.cache
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.exe
+C:\Users\Yana\source\repos\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.pdb
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\bin\Debug\2 уровень номер 1.exe.config
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\bin\Debug\2 уровень номер 1.exe
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\bin\Debug\2 уровень номер 1.pdb
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.csproj.AssemblyReference.cache
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.csproj.CoreCompileInputs.cache
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.exe
+C:\Users\Yana\source\repos\BBI-23-4\2 уровень номер 1\2 уровень номер 1\obj\Debug\2 уровень номер 1.pdb
