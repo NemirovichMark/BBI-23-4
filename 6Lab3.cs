@@ -1,51 +1,57 @@
 using System;
 using System.Collections.Generic;
 
-class Answer
+struct Answer
 {
-    public string Text { get; set; }
-    public int Count { get; set; }
+    private string _text;
+    public int _counts;
+
+    public string Text => _text;
+    public int Count => _counts;
 
     public Answer(string text)
     {
-        Text = text;
-        Count = 0;
+        _text = text;
+        _counts = 0;
     }
 }
 
-class Question
+struct Question
 {
-    public string Text { get; set; }
-    public List<Answer> Answers { get; set; }
+    private string _text;
+    private List<Answer> _answers;
+
+    public string Text => _text;
+    public List<Answer> Answers => _answers;
 
     public Question(string text)
     {
-        Text = text;
-        Answers = new List<Answer>();
+        _text = text;
+        _answers = new List<Answer>();
     }
 
     public void AddAnswer(string answer)
     {
-        Answer existingAnswer = Answers.Find(x => x.Text == answer);
+        Answer existingAnswer = _answers.Find(x => x.Text == answer);
 
-        if (existingAnswer == null)
+        if (existingAnswer.Equals(default(Answer)))
         {
-            Answers.Add(new Answer(answer));
+            _answers.Add(new Answer(answer));
         }
         else
         {
-            existingAnswer.Count++;
+            existingAnswer._counts++;
         }
     }
 
     public List<Answer> GetTopAnswers(int n)
     {
-        Answers.Sort((a, b) => b.Count.CompareTo(a.Count));
-
-
-        return Answers.GetRange(0, n);
+        _answers.Sort((a, b) => b.Count.CompareTo(a.Count));
+        return _answers.GetRange(0, n);
     }
+
 }
+
 
 class Program
 {
@@ -54,9 +60,9 @@ class Program
 
         Question[] questions = new Question[]
         {
-            new Question("Какое животное Вы связываете с Японией и японцами?"),
-            new Question("Какая черта характера присуща японцам больше всего?"),
-            new Question("Какай неодушевленный предмет или понятие Вы связываете с Японией?")
+            new Question("Quest1"),
+            new Question("Quest2"),
+            new Question("Quest3")
         };
 
 
@@ -70,11 +76,11 @@ class Program
             }
         }
 
-        Console.WriteLine("Результаты опроса");
+        Console.WriteLine("Results");
         Console.WriteLine("---------------------");
         for (int i = 0; i < 3; i++)
         {
-            Console.WriteLine("Вопрос: {0}", questions[i].Text);
+            Console.WriteLine("Question: {0}", questions[i].Text);
             Console.WriteLine("---------------------");
             List<Answer> topAnswers = questions[i].GetTopAnswers(5);
             for (int j = 0; j < topAnswers.Count; j++)
@@ -86,5 +92,3 @@ class Program
         }
     }
 }
-
-
