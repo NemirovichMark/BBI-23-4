@@ -8,10 +8,6 @@
         private double _thirdexam;
         private double _fourthexam;
         private double _AVG;
-        public double Firstexam { get { return _firstexam; } set { _firstexam = value; } }
-        public double Secondexam { get { return _secondexam; } set { _secondexam = value; } }
-        public double Thirdtexam { get { return _thirdexam; } set { _thirdexam = value; } }
-        public double Fourthexam { get { return _fourthexam; } set { _fourthexam = value; } }
         public double AVG { get { return _AVG; } set { _AVG = value; } }
         public tablica(string name, double firstexam, double secondexam, double thirdexam, double fourthexam)
         {
@@ -67,13 +63,6 @@
                     results[i] = all;
 
                 }
-
-
-
-
-
-
-
             }
         }
         return results;

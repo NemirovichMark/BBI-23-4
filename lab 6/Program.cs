@@ -8,8 +8,6 @@ struct sorevnovania
     private int _besttry;
     private int _firsttry;
     private int _secondtry;
-    public int Firsttry { get { return _firsttry; } set { _firsttry = value; } }
-    public int Secondtry { get { return _secondtry; } set { _secondtry = value; } }
 
     public int Besttry { get { return _besttry; } set { _besttry = value; } }
     public sorevnovania(int firsttry, int secondtry, string surname)
