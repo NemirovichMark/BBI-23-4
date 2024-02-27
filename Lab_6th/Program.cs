@@ -9,9 +9,13 @@ namespace Lab_6th
     {
         private int _points = 0;
         private string _surname = "";
-        public int Points { get { return _points; } set { _points += value; } }
-        public string Surname { get { return _surname; } set { _surname = value; } }
+        public int Points { get { return _points; } private set { _points += value; } }
+        public string Surname { get { return _surname; } }
         public Person (string surname) { _surname = surname; CalculateJumpPoints(); CalculateJuryPoints(); }
+        public void Write()
+        {
+            Console.WriteLine($"Учасник {_surname}, Счёт: {_points}");
+        }
         void CalculateJuryPoints()
         {
             Random random = new Random();
@@ -39,8 +43,9 @@ namespace Lab_6th
         {
             private int _mark;
             private int _misses;
-            public int Mark { get { return _mark; } set { _mark = value; } }
-            public int Misses { get { return _misses; } set { _misses = value; } }
+            public int Mark { get { return _mark; } }
+            public int Misses { get { return _misses; } }
+            
             public Student(int mark, int misses)
             {
                 _mark = mark;
@@ -50,22 +55,38 @@ namespace Lab_6th
 
         struct Command
         {
-            private int _points = 0;
-            private int _difference = 0;
-            private string _name = "";
-            public string Name { get { return _name; } set { _name = value; } }
-            public int Points { get { return _points; } set { _points += value; } }
-            public int Difference { get { return _difference; } set { _difference += value; } }
+            private int _points;
+            private int _difference;
+            private string _name;
+            public int Points { get { return _points; } private set { _points = value; } }
+            public int Difference { get { return _difference; } private set { _difference = value; } }
+            public void Win()
+            {
+                Points += 3;
+            }
+            public void Tie()
+            {
+                Points++;
+            }
+            public void AddDifference(int a)
+            {
+                Difference += a;
+            }
             public Command(string name)
             {
                 _name = name;
                 _points = 0;
                 _difference = 0;
             }
+            public void Write(int n)
+            {
+                Console.WriteLine($"{n} Место заняла команда {_name}, их счёт: {_points}; Разница: {_difference}");
+            }
         }
         static void Main(string[] args)
         {
-            void InsertionSort (Person[] person)
+
+            void InsertionSort(Person[] person)
             {
                 int n = person.Length;
                 for (int i = 1; i < n; i++)
@@ -128,15 +149,19 @@ namespace Lab_6th
                     Index++;
                 }
             }
-            for (int i = 0; i < underachieversList.Length - 1; i++)
+            for (int m = 0; m < underachieversList.Length; m++)
             {
-                if (underachieversList[i].Misses > underachieversList[i + 1].Misses)
+                for (int i = 0; i < underachieversList.Length - 1; i++)
                 {
-                    Student att = underachieversList[i];
-                    underachieversList[i] = underachieversList[i + 1];
-                    underachieversList[i + 1] = att;
+                    if (underachieversList[i].Misses > underachieversList[i + 1].Misses)
+                    {
+                        Student att = underachieversList[i];
+                        underachieversList[i] = underachieversList[i + 1];
+                        underachieversList[i + 1] = att;
+                    }
                 }
             }
+                
             for (int i = 0; i < underachieversList.Length; i++) { Console.WriteLine($"Student N{i + 1}: {underachieversList[i].Misses} missed\n"); }
 
 
@@ -147,13 +172,14 @@ namespace Lab_6th
                 Competitors[i] = new Person(Surnames[i]);
             }
             InsertionSort(Competitors);
-            for (int i = 0;i < Competitors.Length; i++)
+            for (int i = 0; i < Competitors.Length; i++)
             {
-                Console.WriteLine($"Учасник {Competitors[i].Surname}, Счёт: {Competitors[i].Points}");
+                Competitors[i].Write();
             }
 
 
             Console.WriteLine("Level III");
+
             int[] MatchesResults = new int[30];
             string[] MatchesCommands = new string[30];
             int[] MatchesCommandsId = new int[30];
@@ -173,14 +199,14 @@ namespace Lab_6th
             }
             for (int i = 0; i < 30; i += 2)
             {
-                if (MatchesResults[i] == MatchesResults[i + 1]) { CommandsList[MatchesCommandsId[i]].Points = 1; CommandsList[MatchesCommandsId[i + 1]].Points = 1; }
-                else if (MatchesResults[i] > MatchesResults[i + 1]) { CommandsList[MatchesCommandsId[i]].Points = 3; }
-                else { CommandsList[MatchesCommandsId[i + 1]].Points = 3; }
-                CommandsList[MatchesCommandsId[i]].Difference = Math.Abs(MatchesResults[i] - MatchesResults[i + 1]);
-                CommandsList[MatchesCommandsId[i + 1]].Difference = Math.Abs(MatchesResults[i] - MatchesResults[i + 1]);
+                if (MatchesResults[i] == MatchesResults[i + 1]) { CommandsList[MatchesCommandsId[i]].Tie(); CommandsList[MatchesCommandsId[i + 1]].Tie(); }
+                else if (MatchesResults[i] > MatchesResults[i + 1]) { CommandsList[MatchesCommandsId[i]].Win(); }
+                else { CommandsList[MatchesCommandsId[i + 1]].Win(); }
+                CommandsList[MatchesCommandsId[i]].AddDifference(Math.Abs(MatchesResults[i] - MatchesResults[i + 1]));
+                CommandsList[MatchesCommandsId[i + 1]].AddDifference(Math.Abs(MatchesResults[i] - MatchesResults[i + 1]));
             }
             GnomeSort(CommandsList);
-            for (int i = 0;i < CommandsList.Length;i++) { Console.WriteLine($"{i + 1} Место заняла команда {CommandsList[i].Name}, их счёт: {CommandsList[i].Points}; Разница: {CommandsList[i].Difference}"); }
+            for (int i = 0; i < CommandsList.Length; i++) { CommandsList[i].Write(i + 1); }
             Console.ReadKey();
         }
     }
