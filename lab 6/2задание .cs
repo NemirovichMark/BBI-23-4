@@ -1,6 +1,11 @@
-﻿class Program
+﻿
+//1.Студенты одной группы в сессию сдают четыре экзамена. Составить список
+//студентов, средний балл которых по всем экзаменам не менее «4». Результаты
+//вывести в виде таблицы с заголовком в порядке убывания среднего балла.
+
+class Program
 {
-    struct tablica
+    struct tablica// структура
     {
         private string _name;
         private double _firstexam;
@@ -8,7 +13,7 @@
         private double _thirdexam;
         private double _fourthexam;
         private double _AVG;
-        public double AVG { get { return _AVG; } set { _AVG = value; } }
+        public double AVG { get { return _AVG; } set { _AVG = value; } }// свойство
         public tablica(string name, double firstexam, double secondexam, double thirdexam, double fourthexam)
         {
             _name = name;
@@ -25,10 +30,8 @@
         public void Print()
         {
             if (_AVG >= 4)
-
             {
                 Console.WriteLine("{0},   {1}", _name, _AVG);
-
             }
         }
     }
@@ -46,7 +49,6 @@
         for (int i = 0; i < results.Length; i++)
 
         { results[i].Print(); }
-
     }
     static tablica[] sort(tablica[] results)
     {
@@ -57,11 +59,9 @@
             {
                 if (results[i].AVG < results[j].AVG)
                 {
-
                     tablica all = results[j];
                     results[j] = results[i];
                     results[i] = all;
-
                 }
             }
         }
