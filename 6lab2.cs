@@ -1,123 +1,57 @@
-class Diver
+using System;
+using System.Collections.Generic;
+
+struct Diver
 {
-
-    public string Name { get; set; }
-
-
-    public List<Jump> Jumps { get; set; }
-
-    public double TotalScore { get; set; }
+    private string _name;
+    private List<Jump> _jumps;
+    private double _totalScore;
 
     public Diver(string name)
     {
-        Name = name;
-        Jumps = new List<Jump>();
+        _name = name;
+        _jumps = new List<Jump>();
     }
+
+    public string Name => _name;
 
     public void AddJump(Jump jump)
     {
-        Jumps.Add(jump);
+        _jumps.Add(jump);
     }
 
-    public void CalculateTotalScore()
+    public double TotalScore
     {
-        TotalScore = 0;
-        for (int i = 0; i < Jumps.Count; i++)
+        get
         {
-            TotalScore += Jumps[i].GetScore();
+            if (_totalScore == 0)
+            {
+                _totalScore = _jumps.Sum(jump => jump.GetScore());
+            }
+            return _totalScore;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"| {_name} | {TotalScore:F2} |";
     }
 }
 
-class Jump
-{
-    public double Difficulty { get; set; }
-
-    public List<double> Scores { get; set; }
-
-    public Jump(double difficulty)
-    {
-        Difficulty = difficulty;
-        Scores = new List<double>();
-    }
-
-    public void AddScore(double score)
-    {
-        Scores.Add(score);
-    }
-
-    public double GetScore()
-    {
-        Scores.Sort();
-
-        double sum = 0;
-        for (int i = 1; i < Scores.Count - 1; i++)
-        {
-            sum += Scores[i];
-        }
-
-        return sum * Difficulty;
-    }
-}
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Amount of divers");
-        int n = int.Parse(Console.ReadLine());
-
-        List<Diver> divers = new List<Diver>();
-
-        for (int i = 0; i < n; i++)
-        {
-            Console.WriteLine("Surname");
-            string name = Console.ReadLine();
-
-            Diver diver = new Diver(name);
-
-            for (int j = 0; j < 4; j++)
-            {
-                Console.WriteLine("Difficulty");
-
-                double difficulty = double.Parse(Console.ReadLine());
-
-                Jump jump = new Jump(difficulty);
-
-\                for (int k = 0; k < 7; k++)
-                {
-                    Console.WriteLine("7 marks");
-
-                    double score = double.Parse(Console.ReadLine());
-
-                    jump.AddScore(score);
-                }
-
-
-                diver.AddJump(jump);
-            }
-
-            divers.Add(diver);
-        }
-
-        foreach (Diver diver in divers)
-        {
-            diver.CalculateTotalScore();
-        }
-
-        divers.Sort((a, b) => b.TotalScore.CompareTo(a.TotalScore));
 
         Console.WriteLine("Results:");
         Console.WriteLine("---------------------");
         Console.WriteLine("| Place | Surname | Total |");
         Console.WriteLine("---------------------");
-        for (int i = 0; i < n; i++)
+        foreach (Diver diver in divers)
         {
-            Console.WriteLine("| {0} | {1} | {2} |", i + 1, divers[i].Name, divers[i].TotalScore);
+            Console.WriteLine(diver);
         }
         Console.WriteLine("---------------------");
     }
 }
-
-
-
