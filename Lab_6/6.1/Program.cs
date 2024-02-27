@@ -10,19 +10,19 @@ namespace _6._1
     {
         struct Info
         {
-            public string Name;
-            public string Society;
-            public int FirstResult;
-            public int SecondResult;
-            public int Summ;
-            public Info(string name, string society, int firstResult, int secondResult)
+            private string Name;
+            private string Society;
+            private int FirstResult;
+            private int SecondResult;
+            public int Summ { get { return FirstResult + SecondResult; } } //публичное свойство
+            public Info(string name, string society, int firstResult, int secondResult) //конструктор
             {
                 Name = name;
                 Society = society;
                 FirstResult = firstResult;
                 SecondResult = secondResult;
-                Summ = firstResult + secondResult;
             }
+            public void Print() => Console.WriteLine($"{Name}\t{Society}\t{Summ}");
         }
         static void Main(string[] args)
         {
@@ -34,7 +34,7 @@ namespace _6._1
             info[3] = new Info("Алиса", "ББИ-23-1", 201, 102);
             info[4] = new Info("Пётр", "ББИ-23-4", 168, 172);
 
-            for (int i = 0; i < info.Length - 1; i++)   //сортировка по сумме результатов
+            for (int i = 0; i < info.Length - 1; i++)   //сортировка пузырьком по сумме результатов
             {
                 for (int j = i + 1; j < info.Length; j++)
                 {
@@ -49,7 +49,10 @@ namespace _6._1
 
             Console.WriteLine("Место\tИмя\tОбщество\tСумма результатов"); //заголовок таблицы
             for (int i = 0; i < info.Length; i++)  //Вывод таблицы
-                Console.WriteLine($"{i + 1}\t{info[i].Name}\t{info[i].Society}\t{info[i].Summ}");
+            {
+                Console.Write($"{i + 1}\t");
+                info[i].Print();
+            }
         }
     }
 }

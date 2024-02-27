@@ -8,17 +8,18 @@ namespace _6._2
 {
     struct Info
     {
-        public string Surname;
-        public double[] Marks;
-        public double Summ;
+        private string Surname;
+        private double[] Marks;
+        private double Summa;
+        public double Summ { get { return Summa; } } //публичное свойство
         public Info(string surname, double[] marks)
         {
             Surname = surname;
             Marks = marks;
-            Summ = 0;
-            for (int i = 0; i < Marks.Length; i++) //подсчёт суммы
-                Summ += Marks[i];
+            Summa = 0;
+            for (int i = 0; i < Marks.Length; i++) { Summa += Marks[i]; } //подсчёт суммы
         }
+        public void Print() => Console.WriteLine("{0}\t {1}", Surname, Summa);
     }
     internal class Program
     {
@@ -30,15 +31,19 @@ namespace _6._2
             info[2] = new Info("Ли", new double[] { 0, 1, 1, 0.5, 0, 1 });
             info[3] = new Info("Ким", new double[] { 0, 0, 1, 0.5, 0, 1 });
             info[4] = new Info("Блоков", new double[] { 1, 1, 1, 0.5, 0, 0 });
+            Console.WriteLine("Фамилия\t Набранные быллы");  //вывод исходных данных
             for (int i = 0; i < info.Length; i++)
-                Console.WriteLine("Фамилия: {0}\t Набранные быллы: {1,4:f2}", info[i].Surname, info[i].Summ);
+                info[i].Print();
 
             Sortirovka(info); //сортировка
 
             Console.WriteLine();
-            Console.WriteLine("Место\t Фамилия\t Набранные баллы");
+            Console.WriteLine("Место\tФамилия\t Набранные баллы");
             for (int i = 0; i < info.Length; i++)  //Вывод итоговой таблицы
-                Console.WriteLine("{0}\t {1}\t         {2}", i + 1, info[i].Surname, info[i].Summ);
+            {
+                Console.Write($"{i + 1}\t");
+                info[i].Print();
+            }
         }
         static void Sortirovka(Info[] info)
         {
