@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 struct Jumper
@@ -45,7 +45,26 @@ static void Main(string[] args)
         jumpers.Add(new Jumper(surname, team, try1, try2));
     }
 
-    jumpers.Sort((a, b) => b.Summa.CompareTo(a.Summa));
+   // jumpers.Sort((a, b) => b.Summa.CompareTo(a.Summa));
+static void GSort(Jumper[] jumpers)
+{
+    int i = 0;
+    while (i < jumpers.Length)
+    {
+        if (i == 0 || jumpers[i].Summa >= jumpers[i - 1].Summa)
+        {
+            i++;
+        }
+        else
+        {
+            Jumper temp = jumpers[i];
+            jumpers[i] = jumpers[i - 1];
+            jumpers[i - 1] = temp;
+            i--;
+        }
+    }
+}
+    GSort(jumpers);
 
     Console.WriteLine("Results");
     Console.WriteLine("-----------------------------------------");
