@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Чёртов мак", "Чё
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Лекции", "Лекции\Лекции.csproj", "{9B06B4F2-29D6-400D-ACEA-2E2B8E156E91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.2", "6.2\6.2.csproj", "{1B6A62DA-EAE8-4E75-AA53-D1B7F7D8B8AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.3", "6.3\6.3.csproj", "{19FA3107-1A24-4E3B-8959-E15D6FF3ADE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{9B06B4F2-29D6-400D-ACEA-2E2B8E156E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B06B4F2-29D6-400D-ACEA-2E2B8E156E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B06B4F2-29D6-400D-ACEA-2E2B8E156E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6A62DA-EAE8-4E75-AA53-D1B7F7D8B8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6A62DA-EAE8-4E75-AA53-D1B7F7D8B8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6A62DA-EAE8-4E75-AA53-D1B7F7D8B8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6A62DA-EAE8-4E75-AA53-D1B7F7D8B8AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19FA3107-1A24-4E3B-8959-E15D6FF3ADE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19FA3107-1A24-4E3B-8959-E15D6FF3ADE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19FA3107-1A24-4E3B-8959-E15D6FF3ADE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19FA3107-1A24-4E3B-8959-E15D6FF3ADE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
