@@ -13,7 +13,7 @@ class Program
         private double _thirdexam;
         private double _fourthexam;
         private double _AVG;
-        public double AVG { get { return _AVG; } set { _AVG = value; } }// свойство
+        public double AVG { get { return _AVG; } }// свойство
         public tablica(string name, double firstexam, double secondexam, double thirdexam, double fourthexam)
         {
             _name = name;

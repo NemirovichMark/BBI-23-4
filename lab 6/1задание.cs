@@ -7,7 +7,7 @@ struct sorevnovania// создаём структуру
     private int _besttry;
     private int _firsttry;
     private int _secondtry;
-    public int Besttry { get { return _besttry; } set { _besttry = value; } } // свойство
+    public int Besttry { get { return _besttry; } } // свойство
     public sorevnovania(int firsttry, int secondtry, string surname)// конструктор
     {
         _firsttry = firsttry;
