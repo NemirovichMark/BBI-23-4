@@ -1,0 +1,14 @@
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\bin\Debug\net6.0\3 уровень 5 задача.exe
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\bin\Debug\net6.0\3 уровень 5 задача.deps.json
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\bin\Debug\net6.0\3 уровень 5 задача.runtimeconfig.json
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\bin\Debug\net6.0\3 уровень 5 задача.dll
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\bin\Debug\net6.0\3 уровень 5 задача.pdb
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.AssemblyInfoInputs.cache
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.AssemblyInfo.cs
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.csproj.CoreCompileInputs.cache
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.dll
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\refint\3 уровень 5 задача.dll
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.pdb
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\3 уровень 5 задача.genruntimeconfig.cache
+C:\Users\Miroslava\source\repos\BBI-23-4\3 уровень 5 задача\3 уровень 5 задача\obj\Debug\net6.0\ref\3 уровень 5 задача.dll
