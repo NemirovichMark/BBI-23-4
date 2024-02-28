@@ -1,58 +1,59 @@
 ﻿// See https://aka.ms/new-console-template for more information
-public class Program
+using System.Runtime.InteropServices;
+
+public struct Result
 {
-    public struct Participant
+    private string surname;
+    private double[] results;
+
+    public Result(string surname, double[] results)
     {
-        private string surname;
-        private int group;
-        private string teachersurname;
-        private double result;
-
-        public Participant(string _surname, int _group, string _teachersurname, double _result)
-        {
-            surname = _surname;
-            group = _group;
-            teachersurname = _teachersurname;
-            result = _result;
-        }
-
-        public string Surname { get { return surname; } }
-        public int Group { get { return group; } }
-        public string TeacherSurname { get { return teachersurname; } }
-        public double Result { get { return result; } }
-
-        private static int k = 0;
-
-        public void Print()
-        {
-            Console.WriteLine("Surname {0} \t Group {1} \t Teacher's Surname {0} \t Result{1:f1}", Surname, Group, TeacherSurname, Result);
-            if (Result <= 2) k++;
-            Console.WriteLine($"{k} women passed the normative");
-        }
-
+        this.surname = surname;
+        this.results = results;
     }
 
-
-    public static void Main(string[] args)
+    public double BestResult()
     {
-        Participant[] person = new Participant[]
+        double bestResult = results[0];
+        for (int i = 1; i < results.Length; i++)
         {
-            new Participant("Ivanova", 1, "Ivanov", 2),
-            new Participant("Petrova", 2, "Petrov", 3),
-            new Participant("Sidorova", 3, "Sidorov", 1) };
-
-        for (int j = 0; j < person.Length - 1; j++)
-        {
-            if (person[j].Result > person[j + 1].Result)
+            if (results[i] > bestResult)
             {
-                var temp = person[j];
-                person[j] = person[j + 1];
-                person[j] = temp;
+                bestResult = results[i];
             }
         }
-        for (int i = 0; i < person.Length; i++)
+        return bestResult;
+    }
+    public void print(Result[] jumpResults)
+    {
+        Console.WriteLine($"Surname: {this.surname}");
+        double bestResult = results[0];
+        for (int i = 1; i < results.Length; i++)
         {
-            person[i].Print();
+            if (results[i] > bestResult)
+            {
+                bestResult = results[i];
+            }
         }
+        Console.WriteLine($"{"Best result:"} {bestResult}");
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Result[] jumpResults = new Result[3];
+        jumpResults[0] = new Result("Ivanov", new double[] { 5.6, 5.9, 6.1 });
+        jumpResults[1] = new Result("Petrov", new double[] { 5.8, 6.0, 6.2 });
+        jumpResults[2] = new Result("Sidorov", new double[] { 5.7, 6.0, 6.3 });
+
+        Console.WriteLine("Table of resuls:");
+
+        for (int i = 0; i < jumpResults.Length; i++)
+        {
+            jumpResults[i].print(jumpResults);
+        }
+        
     }
 }
