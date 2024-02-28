@@ -1,59 +1,85 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.Runtime.InteropServices;
-
-public struct Result
+﻿class FootballTeam
 {
-    private string surname;
-    private double[] results;
+    private string name;
+    private int Scored;
+    private int Failed;
+    private int points;
 
-    public Result(string surname, double[] results)
+    public FootballTeam(string name)
     {
-        this.surname = surname;
-        this.results = results;
+        this.name = name;
     }
 
-    public double BestResult()
+    public string Name { get { return name; } set { name = value; } }
+
+    public void Result(int scored, int conceded)
     {
-        double bestResult = results[0];
-        for (int i = 1; i < results.Length; i++)
-        {
-            if (results[i] > bestResult)
-            {
-                bestResult = results[i];
-            }
-        }
-        return bestResult;
+        Scored += scored;
+        Failed += conceded;
+        if (scored > conceded)
+            points += 3;
+        else if (scored == conceded)
+            points += 1;
     }
-    public void print(Result[] jumpResults)
+
+    public int Points { get { return points; } }
+    public int Difference { get { return Scored - Failed; } }
+
+    public static void print (FootballTeam[] teams)
     {
-        Console.WriteLine($"Surname: {this.surname}");
-        double bestResult = results[0];
-        for (int i = 1; i < results.Length; i++)
+        Console.WriteLine("Place | Team   | Points");
+        for (int i = 0; i < teams.Length; i++)
         {
-            if (results[i] > bestResult)
-            {
-                bestResult = results[i];
-            }
+            Console.WriteLine("{0,5} | {1,-6} | {2}", i + 1, teams[i].Name, teams[i].Points);
         }
-        Console.WriteLine($"{"Best result:"} {bestResult}");
     }
 }
 
-public class Program
+class Program
 {
-    public static void Main()
+    static void Main(string[] args)
     {
-        Result[] jumpResults = new Result[3];
-        jumpResults[0] = new Result("Ivanov", new double[] { 5.6, 5.9, 6.1 });
-        jumpResults[1] = new Result("Petrov", new double[] { 5.8, 6.0, 6.2 });
-        jumpResults[2] = new Result("Sidorov", new double[] { 5.7, 6.0, 6.3 });
-
-        Console.WriteLine("Table of resuls:");
-
-        for (int i = 0; i < jumpResults.Length; i++)
+        FootballTeam[] teams = new FootballTeam[]
         {
-            jumpResults[i].print(jumpResults);
+            new FootballTeam("team1"),
+            new FootballTeam("team2"),
+            new FootballTeam("team3")
+        };
+
+        Match(teams[0], teams[1]);
+        Match(teams[0], teams[2]);
+        Match(teams[1], teams[0]);
+        Match(teams[1], teams[2]);
+        Sort(teams);
+
+        FootballTeam.print(teams);
+    }
+
+    static void Match(FootballTeam team1, FootballTeam team2)
+    {
+        Random random = new Random();
+        int scored = random.Next(0, 5);
+        int conceded = random.Next(0, 5);
+
+        team1.Result(scored, conceded);
+        team2.Result(conceded, scored);
+    }
+
+    static void Sort(FootballTeam[] teams)
+    {
+        int n = teams.Length;
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (teams[j].Points < teams[j + 1].Points ||
+                    (teams[j].Points == teams[j + 1].Points && teams[j].Difference < teams[j + 1].Difference))
+                {
+                    FootballTeam temp = teams[j];
+                    teams[j] = teams[j + 1];
+                    teams[j + 1] = temp;
+                }
+            }
         }
-        
     }
 }
