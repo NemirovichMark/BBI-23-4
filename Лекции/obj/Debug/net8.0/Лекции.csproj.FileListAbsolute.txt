@@ -1,0 +1,15 @@
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/bin/Debug/net8.0/Лекции
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/bin/Debug/net8.0/Лекции.deps.json
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/bin/Debug/net8.0/Лекции.runtimeconfig.json
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/bin/Debug/net8.0/Лекции.dll
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/bin/Debug/net8.0/Лекции.pdb
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.GeneratedMSBuildEditorConfig.editorconfig
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.AssemblyInfoInputs.cache
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.AssemblyInfo.cs
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.csproj.CoreCompileInputs.cache
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.sourcelink.json
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.dll
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/refint/Лекции.dll
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.pdb
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/Лекции.genruntimeconfig.cache
+/Users/aleksandrpodzemelnyj/Documents/Visual Studio/ООП/BBI-23-4/Лекции/obj/Debug/net8.0/ref/Лекции.dll
