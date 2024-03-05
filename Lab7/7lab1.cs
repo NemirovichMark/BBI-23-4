@@ -47,28 +47,51 @@ class Program
             jumpers.Add(new Jumper(surname, team, try1, try2));
         }
 
+
+
         // Custom sorting function from previous task
-        static void GSort(List<Jumper> jumpers)
+
+        static void Quicksort(Jumper[] jumpers, int left, int right)
         {
-            int i = 0;
-            while (i < jumpers.Count)
+            if (left < right)
             {
-                if (i == 0 || jumpers[i].Summa >= jumpers[i - 1].Summa)
-                {
-                    i++;
-                }
-                else
-                {
-                    Jumper temp = jumpers[i];
-                    jumpers[i] = jumpers[i - 1];
-                    jumpers[i - 1] = temp;
-                    i--;
-                }
+                int pivotIndex = Partition(jumpers, left, right);
+                Quicksort(jumpers, left, pivotIndex - 1);
+                Quicksort(jumpers, pivotIndex + 1, right);
             }
         }
 
-        GSort(jumpers);
+        static int Partition(Jumper[] jumpers, int left, int right)
+        {
+            Jumper pivot = jumpers[right];
+            int i = left - 1;
 
+            for (int j = left; j < right; j++)
+            {
+                if (jumpers[j].Summa >= pivot.Summa)
+                {
+                    i++;
+                    Swap(jumpers, i, j);
+                }
+            }
+
+            Swap(jumpers, i + 1, right);
+            return i + 1;
+        }
+
+        static void Swap(Jumper[] jumpers, int i, int j)
+        {
+            Jumper temp = jumpers[i];
+            jumpers[i] = jumpers[j];
+            jumpers[j] = temp;
+        }
+
+
+        Quicksort(jumpers, 0, jumpers.Length - 1);
+
+
+        
+        
         Console.WriteLine("Results");
         Console.WriteLine("-----------------------------------------");
         Console.WriteLine("| Surname | Team | Try 1 | Try 2 | Total |");
