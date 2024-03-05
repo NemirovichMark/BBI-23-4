@@ -85,17 +85,45 @@ namespace Lab_6th
         }
         static void Main(string[] args)
         {
+            void ShellSort(Person[] array)
+            {
+                int size = array.Length;
+                for (int interval = size / 2; interval > 0; interval /= 2)
+                {
+                    for (int i = interval; i < size; i++)
+                    {
+                        Person currentKey = array[i];
+                        int k = i;
+                        while (k >= interval && array[k - interval].Points < currentKey.Points)
+                        {
+                            array[k] = array[k - interval];
+                            k -= interval;
+                        }
+                        array[k] = currentKey;
+                    }
+                }
+            }
 
             void InsertionSort(Person[] person)
             {
                 int n = person.Length;
+                Person key = new Person();
                 for (int i = 1; i < n; i++)
                 {
-                    for (int j = i; j > 0 && person[j - 1].Points < person[j].Points; j--)
+                    key = person[i];
+                    bool flag = true;
+                    for (int j = i; j > 0 && flag; j--)
                     {
-                        Person a = person[j - 1];
-                        person[j - 1] = person[j];
-                        person[j] = a;
+                        if (person[j - 1].Points < key.Points)
+                        {
+                            person[j] = person[j - 1];
+                            if (j == 1) { person[0] = key; }
+                        }
+                        else
+                        {
+                            person[j] = key;
+                            flag = false;
+                        }
                     }
                 }
             }
@@ -104,10 +132,11 @@ namespace Lab_6th
             {
                 int n = commands.Length;
                 int i = 1;
+                int j = 2;
                 while (i < n)
                 {
-                    if (commands[i].Points < commands[i - 1].Points | (commands[i].Points == commands[i - 1].Points & commands[i].Difference <= commands[i - 1].Difference)) { i++; }
-                    else { Command a = commands[i]; commands[i] = commands[i - 1]; commands[i - 1] = a; i--; if (i == 0) { i = 2; } }
+                    if (commands[i].Points < commands[i - 1].Points | (commands[i].Points == commands[i - 1].Points & commands[i].Difference <= commands[i - 1].Difference)) { i = j; j += 1; }
+                    else { Command a = commands[i]; commands[i] = commands[i - 1]; commands[i - 1] = a; i--; if (i == 0) { i = j; j += 1; } }
                 }
             }
             int Maxx(int[] a)
@@ -171,7 +200,7 @@ namespace Lab_6th
             {
                 Competitors[i] = new Person(Surnames[i]);
             }
-            InsertionSort(Competitors);
+            ShellSort(Competitors);
             for (int i = 0; i < Competitors.Length; i++)
             {
                 Competitors[i].Write();
