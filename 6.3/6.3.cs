@@ -9,9 +9,6 @@
 // Предусмотреть необходимость сжатия столбца ответов в случае отсутствия
 // ответов на некоторые вопросы.
 
-using System.Numerics;
-using System.Runtime.CompilerServices;
-
 class Program
 {
     struct Answer
@@ -35,17 +32,17 @@ class Program
     static void SortMatrix(Answer[,] a)
         {
             for (int k = 0; k < a.GetLength(0); k++)
-                for(int i=1; i < a.GetLength(1); i++)
+                for (int i = 1; i < a.GetLength(1); i++)
                     {
-                        Answer q = a[k,i];
+                        Answer q = a[k, i];
                         int j = i - 1;
 
-                        while(j>=0 && a[k,j].prop < q.prop)
+                        while(j >= 0 && a[k, j].prop < q.prop)
                         {
-                            a[k,j + 1] = a[k,j];
-                            a[k,j] = q;
+                            a[k, j + 1] = a[k, j];
                             j--;
                         }
+                        a[k, j + 1] = q;
                     }
         }
     static void Main()

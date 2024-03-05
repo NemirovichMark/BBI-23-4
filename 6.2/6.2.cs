@@ -6,8 +6,6 @@
 // Составить программу, определяющую по исходной таблице оценок фамилии и
 // сумму мест участников в порядке занятых ими мест.
 
-using System.Collections.Immutable;
-
 class Program
 {
     struct Participant
@@ -57,6 +55,30 @@ class Program
                 }
             }
     }
+
+
+    static void ShellSort(Participant[] array, int index)
+        {
+            //расстояние между элементами, которые сравниваются
+            int d = array.Length / 2;
+            while (d >= 1)
+            {
+                for (int i=d; i < array.Length; i++)
+                {
+                    Participant k = array[i];
+                    int j = i - d;
+
+                    while(j>=0 && array[j].scores[index] < k.scores[index])
+                    {
+                        array[j + d] = array[j];
+                        j -= d;
+                    }
+                array[j + d] = k;
+                }
+                d = d / 2;
+            }
+        }
+
     
     static void Main()
     {
@@ -71,7 +93,7 @@ class Program
         
         for (int i = 0; i < 7; i++)
         {
-            Sort(participants, i);
+            ShellSort(participants, i);
             for (int j = 0; j < participants.Length; j++)
             {
                 participants[j].NewPlace(j + 1, i);
