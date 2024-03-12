@@ -48,32 +48,14 @@ namespace Lab_6th
         }
         static void Main(string[] args)
         {
-            void ShellSort120(Jump120[] array)
+            void ShellSort(Jump[] array)
             {
                 int size = array.Length;
                 for (int interval = size / 2; interval > 0; interval /= 2)
                 {
                     for (int i = interval; i < size; i++)
                     {
-                        Jump120 currentKey = array[i];
-                        int k = i;
-                        while (k >= interval && array[k - interval].Points < currentKey.Points)
-                        {
-                            array[k] = array[k - interval];
-                            k -= interval;
-                        }
-                        array[k] = currentKey;
-                    }
-                }
-            }
-            void ShellSort180(Jump180[] array)
-            {
-                int size = array.Length;
-                for (int interval = size / 2; interval > 0; interval /= 2)
-                {
-                    for (int i = interval; i < size; i++)
-                    {
-                        Jump180 currentKey = array[i];
+                        Jump currentKey = array[i];
                         int k = i;
                         while (k >= interval && array[k - interval].Points < currentKey.Points)
                         {
@@ -90,7 +72,7 @@ namespace Lab_6th
             {
                 Competitors[i] = new Jump180(Surnames[i]);
             }
-            ShellSort180(Competitors);
+            ShellSort(Competitors);
             for (int i = 0; i < Competitors.Length; i++)
             {
                 Competitors[i].Write();
@@ -100,7 +82,7 @@ namespace Lab_6th
             {
                 Competitors2[i] = new Jump120(Surnames[i]);
             }
-            ShellSort120(Competitors2);
+            ShellSort(Competitors2);
             for (int i = 0; i < Competitors2.Length; i++)
             {
                 Competitors2[i].Write();
