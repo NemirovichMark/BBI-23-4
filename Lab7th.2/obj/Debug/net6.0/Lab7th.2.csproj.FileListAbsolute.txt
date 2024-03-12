@@ -1,0 +1,14 @@
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\bin\Debug\net6.0\Lab7th.2.exe
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\bin\Debug\net6.0\Lab7th.2.deps.json
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\bin\Debug\net6.0\Lab7th.2.runtimeconfig.json
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\bin\Debug\net6.0\Lab7th.2.dll
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\bin\Debug\net6.0\Lab7th.2.pdb
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.AssemblyInfoInputs.cache
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.AssemblyInfo.cs
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.csproj.CoreCompileInputs.cache
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.dll
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\refint\Lab7th.2.dll
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.pdb
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\Lab7th.2.genruntimeconfig.cache
+C:\Users\MSI-PC\Source\Repos\Artem-Davidenko\BBI-23-4\Lab7th.2\obj\Debug\net6.0\ref\Lab7th.2.dll
