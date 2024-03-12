@@ -41,28 +41,35 @@ class Program
         everything[2] = new sorevnovania(181, 191, "Sidorov");
         everything[3] = new sorevnovania(165, 186, "Ivanov");
         everything[4] = new sorevnovania(175, 171, "Ivanov");
-        everything = sort(everything);
+        sort(everything);
         for (int i = 0; i < everything.Length; i++)
         {
             everything[i].Print();
         }
-
     }
-    static sorevnovania[] sort(sorevnovania[] everything)// метод сортировки
+    static void sort(sorevnovania[] everything)
     {
-        for (int i = 0; i < everything.Length; i++)
+        int d = everything.Length / 2;
+        while (d >= 1)
         {
-            for (int j = i; j < everything.Length - 1; j++)
+            for (int i = d; i < everything.Length; i ++)
             {
-                if (everything[i].Besttry < everything[j].Besttry)
+                sorevnovania l = everything[i];
+                int k = everything[i].Besttry;
+                int j = i - d;
+
+                while (j >= 0 && everything[j].Besttry < k)
                 {
-                    sorevnovania results = everything[j];
-                    everything[j] = everything[i];
-                    everything[i] = results;
+                    everything[j + d] = everything[j];
+                    j -= d;
                 }
+
+                everything[j + d] = l;
             }
+
+            d = d / 2;
         }
-        return everything;
     }
+
 }
 
