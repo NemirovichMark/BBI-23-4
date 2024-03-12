@@ -23,7 +23,7 @@ namespace Lab_6th
             public InformaticStudent(int mark, int misses) : base(mark, misses) { }
             public override void write()
             {
-                Console.WriteLine($"Пропустил {misses} по Информатике");
+                if (mark <= 2) { Console.WriteLine($"Пропустил {misses} по Информатике"); }
             }
         }
         class MathStudent : Student
@@ -31,7 +31,7 @@ namespace Lab_6th
             public MathStudent(int mark, int misses) : base(mark, misses) { }
             public override void write()
             {
-                Console.WriteLine($"Пропустил {misses} по Математике");
+                if (mark <= 2) { Console.WriteLine($"Пропустил {misses} по Математике"); }
             }
         }
         static void Main(string[] args)
@@ -70,44 +70,23 @@ namespace Lab_6th
             int Number = 20;
             MathStudent[] MathList = new MathStudent[Number];
             InformaticStudent[] InfList = new InformaticStudent[Number];
-            int InfnumberOfUnderachievers = 0;
-            int MathnumberOfUnderachievers = 0;
             int[] studentsMarksList = new int[Number];
-            for (int i = 0; i < studentsMarksList.Length; i++) { studentsMarksList[i] = new Random().Next(0, 5); InfList[i] = new InformaticStudent(studentsMarksList[i], new Random().Next(0, 20)); if (studentsMarksList[i] <= 2) InfnumberOfUnderachievers++; }
-            for (int i = 0; i < studentsMarksList.Length; i++) { studentsMarksList[i] = new Random().Next(0, 5); MathList[i] = new MathStudent(studentsMarksList[i], new Random().Next(0, 20)); if (studentsMarksList[i] <= 2) MathnumberOfUnderachievers++; }
-            InformaticStudent[] InfUnderachievers = new InformaticStudent[InfnumberOfUnderachievers];
-            MathStudent[] MathUnderachievers = new MathStudent[MathnumberOfUnderachievers];
-            int Index = 0;
-            for (int i = 0; i < Number; i++)
+            for (int i = 0; i < studentsMarksList.Length; i++) 
             {
-                
-                if (InfList[i].Mark <= 2)
-                {
-                    InfUnderachievers[Index] = InfList[i];
-                    Index++;
-                }
+                MathList[i] = new MathStudent(new Random().Next(0, 5), new Random().Next(0, 20));
+                InfList[i] = new InformaticStudent(new Random().Next(0, 5), new Random().Next(0, 20));
             }
-            Index = 0;
-            for (int i = 0; i < Number; i++)
-            {
-
-                if (MathList[i].Mark <= 2)
-                {
-                    MathUnderachievers[Index] = MathList[i];
-                    Index++;
-                }
-            }
-            QuickSort(InfUnderachievers, 0, InfUnderachievers.Length - 1);
-            QuickSort(MathUnderachievers, 0, MathUnderachievers.Length - 1);
+            QuickSort(InfList, 0, InfList.Length - 1);
+            QuickSort(MathList, 0, MathList.Length - 1);
             Console.WriteLine("Список неуспевающих по Информатике");
-            for (int i = 0;i < InfUnderachievers.Length; i++)
+            for (int i = 0;i < InfList.Length; i++)
             {
-                InfUnderachievers[i].write();
+                InfList[i].write();
             }
             Console.WriteLine("Список неуспевающих по Математике");
-            for (int i = 0; i < MathUnderachievers.Length; i++)
+            for (int i = 0; i < MathList.Length; i++)
             {
-                MathUnderachievers[i].write();
+                MathList[i].write();
             }
             Console.ReadKey();
         }
