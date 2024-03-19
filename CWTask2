@@ -1,0 +1,79 @@
+namespace _1var2
+{
+    abstract class Profession
+    {
+        protected string name;
+        protected double experienceBonus;
+
+        public Profession(string name, double experienceBonus)
+        {
+            this.name = name;
+            this.experienceBonus = experienceBonus;
+        }
+
+        public abstract double CalculateSalary();
+    }
+
+    class Fireman : Profession
+    {
+        private double dangerBonus;
+
+        public Fireman(string name, double experienceBonus, double dangerBonus) : base(name, experienceBonus)
+        {
+            this.dangerBonus = dangerBonus;
+        }
+
+        public override double CalculateSalary()
+        {
+        }
+    }
+
+    class Engineer : Profession
+    {
+        private int category;
+
+        public Engineer(string name, double experienceBonus, int category) : base(name, experienceBonus)
+        {
+            this.category = category;
+        }
+
+        public override double CalculateSalary()
+        {
+        }
+    }
+
+    class Scientist : Profession
+    {
+        private string degree;
+
+        public Scientist(string name, double experienceBonus, string degree) : base(name, experienceBonus)
+        {
+            this.degree = degree;
+        }
+
+        public override double CalculateSalary()
+        {
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Profession[] workers = new Profession[15];
+
+            workers[0] = new Fireman("Jo", 300, 50);
+            workers[1] = new Fireman("Al", 200, 30);
+            workers[2] = new Fireman("Bo", 150, 20);
+
+            workers[3] = new Engineer("Chu", 400, 3);
+            workers[4] = new Engineer("Dav", 250, 2);
+            workers[5] = new Engineer("Eve", 350, 1);
+
+            workers[6] = new Scientist("Hermiona", 500, "PhD");
+            workers[7] = new Scientist("Harry", 400, "MSc");
+            workers[8] = new Scientist("Ron", 450, "BSc");
+
+        }
+    }
+}
