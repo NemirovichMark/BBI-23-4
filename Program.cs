@@ -48,6 +48,8 @@ class Program
             new Triangle(3, 4, 5),
             new Triangle(5, 5, 5),
             new Triangle(4, 4, 3),
+            new Triangle(5, 12, 13),
+            new Triangle(7, 8, 10)
         };
 
         SORT(triangles);
