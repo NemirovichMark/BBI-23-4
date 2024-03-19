@@ -1,0 +1,48 @@
+namespace _1var1
+{
+    internal class Program
+    {
+        struct Point
+        {
+            private int X;
+            private int Y;
+
+            public Point(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
+
+            public double Distance(Point other)
+            {
+                double deltaX = other.X - X;
+                double deltaY = other.Y - Y;
+                return Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
+            }
+
+            public static void PrintAll(Point point1, Point point2)
+            {
+                double distance = point1.Distance(point2);
+                Console.WriteLine("| Point 1  |  X: " + point1.X + "  |  Y: " + point1.Y + "  |");
+                Console.WriteLine("| Point 2  |  X: " + point2.X + "  |  Y: " + point2.Y + "  |");
+                Console.WriteLine("Distance between the points: " + distance);
+                Console.WriteLine();
+            }
+        }
+
+        static void Main()
+        {
+            Point[] points = new Point[3];
+            points[0] = new Point(0, 0);
+            points[1] = new Point(3, 3);
+            points[2] = new Point(1, 2);
+
+            Console.WriteLine("Information about pairs of points:");
+            Console.WriteLine();
+
+            Point.PrintAll(points[0], points[1]);
+            Point.PrintAll(points[1], points[2]);
+            Point.PrintAll(points[0], points[2]);
+        }
+    }
+}
