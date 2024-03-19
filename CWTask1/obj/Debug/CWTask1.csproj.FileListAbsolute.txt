@@ -1,0 +1,8 @@
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\bin\Debug\CWTask1.exe.config
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\bin\Debug\CWTask1.exe
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\bin\Debug\CWTask1.pdb
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\obj\Debug\CWTask1.csproj.AssemblyReference.cache
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\obj\Debug\CWTask1.csproj.SuggestedBindingRedirects.cache
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\obj\Debug\CWTask1.csproj.CoreCompileInputs.cache
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\obj\Debug\CWTask1.exe
+C:\Users\m2304258\source\repos\BBI-23-4\CWTask1\obj\Debug\CWTask1.pdb
