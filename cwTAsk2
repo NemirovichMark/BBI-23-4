@@ -1,0 +1,94 @@
+class Contact
+{
+    protected static int _number;
+    protected int _number1;
+    protected string _name;
+    protected string _surname;
+    protected double _numberphone;
+protected string _email;
+    public Contact(string surname, string name, double numberphone, string email)
+    {
+        _name = name;
+        _surname = surname;
+        _numberphone = numberphone;
+        _email = email;
+        _number++;
+        _number1 = _number;
+    }
+    virtual public void Print()
+    { Console.WriteLine("{0,20},{1,20},{2,20},{3,20},{4,20}", _surname, _name, _numberphone, _email, _number1); }
+}
+ class Employee : Contact
+{
+    protected double _salary;
+    protected string _date;
+    public Employee(string surname, string name, double nemberphone, string email, string date, double salary) : base (surname, name, nemberphone, email)
+    {
+        _salary = salary;
+        _date = date;
+    }
+     override public void Print()
+    {
+        Console.WriteLine("{0,20},{1,20}",_date, _salary);
+    }
+}
+ class Counteragent : Contact
+{
+    protected double _cost;
+    protected int _time;
+    public Counteragent(string surname, string name, double nemberphone, string email, int time, double cost ) : base(surname, name, nemberphone, email)
+    {
+        _time = time;
+        _cost = cost;
+    }
+  override public void Print()
+    { Console.WriteLine("{0,20},{1,20}", _time, _cost); }
+
+}
+
+
+ 
+
+   abstract class Program
+    {
+        static void Main()
+        {
+            Contact[] person = new Contact[5];
+            person[0] = new Contact("Podzemelniy", "Alex", 80000000000, "Podz@mail.ru");
+            person[1] = new Contact("Ragozin", "Artyom", 80000000001, "Ragozin@mail.ru");
+            person[2] = new Contact("Davidenko", "Artyom", 80000000002, "Davidenko@mail.ru");
+            person[3] = new Contact("Zhelonkinh", "Valia", 80000000003, "Zhelonkinh@mail.ru");
+            person[4] = new Contact("Perminova", "Milena", 80000000004, "Perminova@mail.ru");
+            Console.WriteLine("{0,20},{1,20},{2,20},{3,20},{4,20}", "Фамилия", "Имя", "Номер телефона", "Почта", "Порядковый номер");
+            for (int i = 0; i < person.Length; i++)
+            { person[i].Print(); }
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        Employee[] employees = new Employee[5];
+       employees[0] = new Employee("Podzemelniy", "Alex", 80000000000, "Podz@mail.ru", "28 февраля", 190000);
+        employees[1] = new Employee("Ragozin", "Artyom", 80000000001, "Ragozin@mail.ru","31 января", 270000);
+        employees[2] = new Employee("Davidenko", "Artyom", 80000000002, "Davidenko@mail.ru","30 июля", 707000);
+        employees[3] = new Employee("Zhelonkinh", "Valia", 80000000003, "Zhelonkinh@mail.ru","22 мая", 600070);
+        employees[4] = new Employee("Perminova", "Milena", 80000000004, "Perminova@mail.ru","20 сентебря", 500080);
+        Console.WriteLine("{0,20},{1,20}",  "Дата устройства","Зарплата");
+        for (int i = 0; i < employees.Length; i++)
+        { employees[i].Print(); }
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        Counteragent[]  every= new Counteragent[5];
+        every[0] = new Counteragent("Podzemelniy", "Alex", 80000000000, "Podz@mail.ru", 90, 1900);
+        every[1] = new Counteragent("Ragozin", "Artyom", 80000000001, "Ragozin@mail.ru", 120, 2700);
+        every[2] = new Counteragent("Davidenko", "Artyom", 80000000002, "Davidenko@mail.ru", 150, 7070);
+        every[3] = new Counteragent("Zhelonkinh", "Valia", 80000000003, "Zhelonkinh@mail.ru", 200, 6000);
+        every[4] = new Counteragent("Perminova", "Milena", 80000000004, "Perminova@mail.ru", 300, 5000);
+        Console.WriteLine("{0,20},{1,20}", "Срок договора", "СТоимость");
+        for (int i = 0; i < every.Length; i++)
+        { every[i].Print(); }
+
+    }
+
+}
