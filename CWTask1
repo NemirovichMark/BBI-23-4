@@ -1,0 +1,85 @@
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
+using System.Diagnostics.Tracing;
+using System.Drawing;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
+using static System.Formats.Asn1.AsnWriter;
+using static System.Net.Mime.MediaTypeNames;
+
+#region 1
+struct Disciple
+{
+
+    public string name { get; private set; }
+    public int age { get; private set; }
+    public int[,] grades { get; private set; }
+    public double avg_grade { get; private set; }
+    public bool red { get; private set; }
+    public Disciple(string n, int a, int[,] g, double ag, bool r)
+    {
+        name = n;
+        age = a;
+        grades = g;
+        avg_grade = ag;
+        red = r;
+    }
+    public void displayAll()
+    {
+        Console.Write("\n{0, -18}", $"{name}");
+        for (int i = 0; i < 5; i++) Console.Write("{0, -17}", $"{grades[0, i]}");
+    }
+    public void displayStudent()
+    {
+        Console.Write("\n{0, -20}", $"{name}");
+        Console.Write("{0, -20}", $"{age}");
+        Console.Write("{0, -20}", $"{avg_grade}");
+        Console.Write("{0, -20}", $"{red}");
+    }
+    public void isred()
+    {
+        if (avg_grade > 4.5)
+        {
+            red = true;
+        }
+        else
+        {
+            red = false;
+        }
+    }
+}
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Disciple[] table = new Disciple[3];
+        table[0] = new Disciple("Коля", 8, new int[,] { { 2, 3, 4, 5, 4 } }, 3.5, false);
+        table[1] = new Disciple("Петя", 11, new int[,] { { 5, 4, 5, 5, 5 } }, 4.7, false);
+        table[2] = new Disciple("Дима", 16, new int[,] { { 3, 3, 4, 3, 3 } }, 4.0, false);
+
+        for (int i = 0; i < 3; i++)
+        {
+            table[i].isred();
+        }
+        Console.WriteLine("Фамилия\t\tВозраст\t\tСр. балл\tКрасный диплом?");
+        for (int i = 0; i < 3; i++)
+        {
+            table[i].displayStudent();
+        }
+        Console.WriteLine();
+        Console.WriteLine("\nФамилия\t\tОценка 1\tОценка 2\tОценка 3\tОценка 4\tОценка 5");
+        for (int i = 0; i < 3; i++)
+        {
+            table[i].displayAll();
+        }
+        for (int i = 0; i < table.Length; i++) Console.WriteLine("{0}. {1}", i + 1, table[i]);
+
+ 
+    }
+}
+#endregion
