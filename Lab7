@@ -1,0 +1,517 @@
+using System;
+using System.Data;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
+using System.Diagnostics.Tracing;
+using System.Drawing;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
+using static System.Formats.Asn1.AsnWriter;
+using static System.Net.Mime.MediaTypeNames;
+
+
+//я 22 в списке
+#region 1_3
+public abstract class Static
+{
+    protected string _answer;
+    protected double _count;
+    protected string _type;
+    public Static(string answer, double count)
+    {
+        _answer = answer;
+        _count = count;
+    }
+    public virtual void display()
+    {
+        Console.Write("\n{0, -40}", $"{_answer}");
+        Console.Write("{0, -40}", $"{_count}");
+    }
+    public string PublicAnswer => _answer;
+    public double PublicCount => _count;
+}
+
+class ManOfTheYear : Static
+{
+    public ManOfTheYear(string answer, double count, string type) : base(answer, count)
+    {
+        _type = type;
+    }
+
+}
+class OpeningOfTheYear : Static
+{
+    public OpeningOfTheYear(string answer, double count, string type) : base(answer, count)
+    {
+        _type = type;
+    }
+}
+public class Program
+{
+    private Static[] Sort(Static[] table)
+    {
+        for (int i = 0; i < table.Length; i++)
+        {
+            bool flag = true;
+            for (int j = 0; j < table.Length - (i + 1); j++)
+            {
+                if (table[j].PublicCount < table[j + 1].PublicCount)
+                {
+                    flag = false;
+                    Static k = table[j + 1];
+                    table[j + 1] = table[j];
+                    table[j] = k;
+                }
+            }
+            if (flag)
+            {
+                break;
+            }
+        }
+        return table;
+    }
+    public static void Main(string[] args)
+    {
+        Console.Write("Кол-во респондентов: ");
+        int count = int.Parse(Console.ReadLine());
+        ManOfTheYear[] ManOfTheYear = new ManOfTheYear[count];
+        OpeningOfTheYear[] OpeningOfTheYear = new OpeningOfTheYear[count];
+        string a;
+        string d;
+        for (int i = 0; i < count; i++)
+        {
+            Console.WriteLine("\n{0:d} респондент", i + 1);
+            Console.WriteLine("Кто является человеком года?");
+            a = Console.ReadLine();
+            ManOfTheYear[i] = new ManOfTheYear(a, 0, "MOTY");
+            Console.WriteLine("Кто является открытием года?");
+            a = Console.ReadLine();
+            OpeningOfTheYear[i] = new OpeningOfTheYear(a, 0, "OOTY");
+        }
+        for (int i = 0; i < count; i++)
+        {
+            a = ManOfTheYear[i].PublicAnswer;
+            double h = 0;
+            d = OpeningOfTheYear[i].PublicAnswer;
+            double g = 0;
+            for (int j = 0; j < count; j++)
+            {
+                if (a == ManOfTheYear[j].PublicAnswer) h++;
+                ManOfTheYear[i] = new ManOfTheYear(a, 100 * h / count, "MOTY");
+                if (d == OpeningOfTheYear[j].PublicAnswer) g++;
+                OpeningOfTheYear[i] = new OpeningOfTheYear(d, 100 * g / count, "OOTY");
+            }
+        }
+
+        var sort = new Program();
+        Static[] q1, q2;
+        q1 = sort.Sort((Static[])ManOfTheYear);
+        q2 = sort.Sort((Static[])OpeningOfTheYear);
+
+        string[] c = new string[count];
+        Static[] b = ManOfTheYear;
+        Console.Write("\n\nНаиболее частные ответы MOTY:\tДоли встречи, %");
+        int k = 0;
+        for (int i = 0; i < q1.Length; i++)
+        {
+            if (k == 5) break;
+            if ((i >= 1) && (c[i - 1] != q1[i].PublicAnswer))
+            {
+                q1[i].display();
+                k++;
+            }
+            else if (i < 1)
+            {
+                q1[i].display();
+                k++;
+            }
+            c[i] = q1[i].PublicAnswer;
+        }
+        string[] v = new string[count];
+        Console.Write("\n\nНаиболее частные ответы OOTY:\tДоли встречи, %");
+        k = 0;
+        for (int i = 0; i < q2.Length; i++)
+        {
+            if (k == 5) break;
+            if ((i >= 1) && (v[i - 1] != q2[i].PublicAnswer))
+            {
+                q2[i].display();
+                k++;
+            }
+            else if (i < 1)
+            {
+                q2[i].display();
+                k++;
+            }
+            v[i] = q2[i].PublicAnswer;
+        }
+    }
+}
+#endregion
+
+#region 2_5
+/*public abstract class JumpsOnSki
+{
+    protected string _surname;
+    protected int _Distance;
+    public int ptsTotal { get; private set; }
+    protected int[] _Judges;
+    protected string _NameOfDiscipline;
+    protected int _count;
+    public int Counting(int count, int[] Judges, int Distance)
+    {
+        int ptsFromJudges, ptsForDistance;
+        int[] list = { Judges[0], Judges[1], Judges[2], Judges[3], Judges[4] };
+        int max = list[0];
+        int min = list[0];
+        int Sum = 0;
+        for (int j = 0; j < count; j++)
+        {
+            if (max < list[j])
+            {
+                max = list[j];
+            }
+            if (min > list[j])
+            {
+                min = list[j];
+            }
+            Sum += list[j];
+        }
+        ptsFromJudges = Sum - max - min;
+        ptsForDistance = 120 + (Distance - 120) * 2;
+        return ptsTotal = ptsFromJudges + ptsForDistance;
+    }
+    public JumpsOnSki(string sn, int ds, int pts, int[] js, int ct)
+    {
+        _surname = sn;
+        _Distance = ds;
+        ptsTotal = Counting(ct, js, ds);
+        _Judges = js;
+        _NameOfDiscipline = null;
+        _count = ct;
+    }
+    public virtual void display()
+    {
+
+    }
+    public virtual void displayAll()
+    {
+
+    }   
+}
+class m120 : JumpsOnSki
+{
+    public m120(string sn, int ds, int pts, int[] js, int ct) : base(sn, ds, pts, js, ct)
+    {
+        _NameOfDiscipline = "120м";
+    }
+    public override void display()
+    {
+        Console.WriteLine("120 метров\t{0}\t\t{1}", _surname, ptsTotal);
+    }
+    public override void displayAll()
+    {
+        Console.Write("\n{0}\t{1}", "120 метров", _surname);
+        for (int i = 0; i < _Judges.Length; i++) Console.Write("\t\t{0}", _Judges[i]);
+        Console.Write("\t{0}", _Distance);
+    }
+}
+class m180 : JumpsOnSki
+{
+    public m180(string sn, int ds, int pts, int[] js, int ct) : base(sn, ds, pts, js, ct)
+    {
+        _NameOfDiscipline = "180м";
+    }
+    public override void display()
+    {
+        Console.WriteLine("180 метров\t{0}\t\t{1}", _surname, ptsTotal);
+    }
+    public override void displayAll()
+    {
+        Console.Write("\n{0}\t{1}", "120 метров", _surname);
+        for (int i = 0; i < _Judges.Length; i++) Console.Write("\t\t{0}", _Judges[i]);
+        Console.Write("\t{0}", _Distance);
+    }
+}
+
+class Program1
+{
+    private JumpsOnSki[] Sort(JumpsOnSki[] table)
+    {
+        for (int i = 0; i < table.Length - 1; i++)
+        {
+            double amax = table[i].ptsTotal;
+            int imax = i;
+
+            for (int j = i + 1; j < table.Length; j++)
+            {
+                if (table[j].ptsTotal > amax)
+                {
+                    amax = table[j].ptsTotal;
+                    imax = j;
+                }
+            }
+            JumpsOnSki temp;
+            temp = table[imax];
+            table[imax] = table[i];
+            table[i] = temp;
+        }
+        return table;
+    }
+    static void Main()
+    {
+        Console.Write("Кол-во спортсменов: ");
+        int count = int.Parse(Console.ReadLine());
+        Console.Write("Кол-во спортсменов на 120 метров: ");
+        int count120 = int.Parse(Console.ReadLine());
+        JumpsOnSki[] s = new JumpsOnSki[count];
+
+        string str;
+        int[] arr1, arr2, arr3, arr4, arr5, arr6;
+
+        string[] arr;
+        Console.WriteLine("Введите фамилию всех участников через пробел участника: ");
+        str = Console.ReadLine();
+        arr = str.Split(' ').ToArray();
+        string str1;
+
+        Console.WriteLine("Введите дистанции для всех участников (через пробел): ");
+        str = Console.ReadLine();
+        arr1 = str.Split(' ').Select(int.Parse).ToArray();
+
+        for (int i = 0; i < count120; i++)
+        {
+            Console.WriteLine("Введите оценку судей для {0} участника (через пробел) для прыжков на 120 метров: ", i + 1);
+            str1 = Console.ReadLine();
+            arr6 = str1.Split(' ').Select(int.Parse).ToArray();
+            s[i] = new m120(arr[i], arr1[i], 0, arr6, count);
+        }
+
+        for (int i = count120; i < count; i++)
+        {
+            Console.WriteLine("Введите оценку судей для {0} участника (через пробел) для прыжков на 180 метров: ", i + 1);
+            str1 = Console.ReadLine();
+            arr6 = str1.Split(' ').Select(int.Parse).ToArray();
+            s[i] = new m180(arr[i], arr1[i], 0, arr6, count);
+        }
+
+        Console.WriteLine("Дистанция\tФамилия\t\tСудья 1\t\tСудья 2\t\tСудья 3\t\tСудья 4\t\tСудья 5\tДлина прыжка");
+        for (int i = 0; i < s.Length; i++)
+        {
+            s[i].displayAll();
+        }
+        var sort = new Program1();
+        s = sort.Sort(s);
+        Console.WriteLine();
+        Console.WriteLine("Дистанция\tФамилия\t\tКол-во баллов");
+        for (int i = 0; i < s.Length; i++)
+        {
+            s[i].display();
+        }
+    }
+}*/
+#endregion
+
+
+#region 3_5
+/*public class FootballTeams
+{
+    public string TeamName { get; private set; }
+    protected int goals;
+    protected int misses;
+    public int points { get; private set; }
+    public int difference { get; private set; }
+    public string _type { get; private set; }
+    public FootballTeams(string name, int gl, int ms, int pts, int dif, string type)
+    {
+        TeamName = name;
+        goals = gl;
+        misses = ms;
+        points = pts;
+        difference = dif;
+        _type = type;
+    }
+    public void displayTeamName()
+    {
+        Console.Write(TeamName);
+    }
+
+    public void Result(int goals, int misses)
+    {
+        if (goals > misses)
+        {
+            points += 3;
+        }
+        else if (goals == misses)
+        {
+            points += 1;
+        }
+        difference = difference + goals - misses;
+    }
+}
+class WomenTeam : FootballTeams
+{
+    public WomenTeam(string name, int gl, int ms, int pts, int dif, string type) : base(name, gl, ms, pts, dif, type)
+    {
+
+    }
+}
+class MenTeam : FootballTeams
+{
+    public MenTeam(string name, int gl, int ms, int pts, int dif, string type) : base(name, gl, ms, pts, dif, type)
+    {
+
+    }
+}
+public class Games
+{
+    public string team1 { get; private set; }
+    public string team2 { get; private set; }
+    public int score1 { get; private set; }
+    public int score2 { get; private set; }
+    public Games(string t1, string t2, int s1, int s2)
+    {
+        team1 = t1;
+        team2 = t2;
+        score1 = s1;
+        score2 = s2;
+    }
+}
+class Program
+{
+    private FootballTeams[] Sort(FootballTeams[] table)
+    {
+        for (int i = 0; i < table.Length; i++)
+        {
+            bool flag = true;
+            for (int j = 0; j < table.Length - (i + 1); j++)
+            {
+                if (table[j].points < table[j + 1].points)
+                {
+                    flag = false;
+                    FootballTeams k = table[j + 1];
+                    table[j + 1] = table[j];
+                    table[j] = k;
+                }
+            }
+            if (flag)
+            {
+                break;
+            }
+        }
+        for (int i = 0; i < table.Length - 1; i++)
+        {
+            if (table[i].points == table[i + 1].points)
+            {
+                if (table[i].difference < table[i + 1].difference)
+                {
+                    FootballTeams k = table[i];
+                    table[i] = table[i + 1];
+                    table[i + 1] = k;
+                }
+            }
+        }
+        return table;
+    }
+    static void Main()
+    {
+        Console.Write("Введите кол-во команд: ");
+        int emount_teams = int.Parse(Console.ReadLine());
+        WomenTeam[] WomenTeam = new WomenTeam[emount_teams];
+        MenTeam[] MenTeam = new MenTeam[emount_teams];
+        string a;
+        for (int i = 0; i < emount_teams; i++)
+        {
+            Console.WriteLine("Введите название " + (i + 1) + " женской команды: ");
+            a = Console.ReadLine();
+            WomenTeam[i] = new WomenTeam(a, 0, 0, 0, 0, "женская сборная");
+        }
+        for (int i = 0; i < emount_teams; i++)
+        {
+            Console.WriteLine("Введите название " + (i + 1) + " мужской команды: ");
+            a = Console.ReadLine();
+            MenTeam[i] = new MenTeam(a, 0, 0, 0, 0, "мужская сборная");
+        }
+
+        int emount_games = emount_teams * (emount_teams - 1) / 2;
+        Games[] table = new Games[emount_games * 4];
+
+        string str;
+        int[] arr;
+        int n, k;
+        k = -2;
+        for (int j = 0; j < emount_teams; j++)
+        {
+            n = j;
+            for (int i = j; i < emount_teams - 1; i++)
+            {
+                k += 2;
+                n += 1;
+                Console.WriteLine("Введите счёт женской встречи: ");
+                WomenTeam[j].displayTeamName();
+                Console.Write(" VS ");
+                WomenTeam[n].displayTeamName();
+                Console.WriteLine();
+                str = Console.ReadLine();
+                arr = str.Split(' ').Select(int.Parse).ToArray();
+                table[k] = new Games(WomenTeam[j].TeamName, WomenTeam[n].TeamName, arr[0], arr[1]);
+                table[k + 1] = new Games(WomenTeam[n].TeamName, WomenTeam[j].TeamName, arr[1], arr[0]);
+            }
+        }
+
+        for (int j = 0; j < emount_teams; j++)
+        {
+            n = j;
+            for (int i = j; i < emount_teams - 1; i++)
+            {
+                k += 2;
+                n += 1;
+                Console.WriteLine("Введите счёт мужской встречи: ");
+                MenTeam[j].displayTeamName();
+                Console.Write(" VS ");
+                MenTeam[n].displayTeamName();
+                Console.WriteLine();
+                str = Console.ReadLine();
+                arr = str.Split(' ').Select(int.Parse).ToArray();
+                table[k] = new Games(MenTeam[j].TeamName, MenTeam[n].TeamName, arr[0], arr[1]);
+                table[k + 1] = new Games(MenTeam[n].TeamName, MenTeam[j].TeamName, arr[1], arr[0]);
+            }
+        }
+
+        for (int i = 0; i < emount_teams; i++)
+        {
+            for (int j = 0; j < emount_games * 4; j++)
+            {
+                if (table[j].team1 == WomenTeam[i].TeamName)
+                {
+                    WomenTeam[i].Result(table[j].score1, table[j].score2);
+                }
+                if (table[j].team1 == MenTeam[i].TeamName)
+                {
+                    MenTeam[i].Result(table[j].score1, table[j].score2);
+                }
+            }
+        }
+        FootballTeams[] FootballTeams = new FootballTeams[emount_teams*2];
+        int l = -2;
+        for (int i = 0; i < emount_teams; i++)
+        {
+            l += 2;
+            FootballTeams[l] = new FootballTeams(MenTeam[i].TeamName, 0,0 , MenTeam[i].points, MenTeam[i].difference, "мужская сборная");
+            FootballTeams[l+1] = new FootballTeams(WomenTeam[i].TeamName, 0, 0, WomenTeam[i].points, WomenTeam[i].difference, "женская сборная");
+        }
+        FootballTeams[] q1;
+        var sort = new Program();
+        q1 = sort.Sort(FootballTeams);
+        Console.WriteLine("Место\tКоманда\tПол\t\tОчки");
+        for (int i = 0; i < emount_teams * 2; i++)
+        {
+            Console.WriteLine("{0}\t{1}\t{2}\t{3}", i + 1, q1[i].TeamName, q1[i]._type, q1[i].points);
+        }
+    }
+}*/
+#endregion
